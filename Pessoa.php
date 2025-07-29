@@ -2,19 +2,28 @@
 
 class Pessoa
 {
-    public float $massa;
-    public float $altura;
-    public string $nome;
+    private float $massa;
+    private float $altura;
+    private string $nome;
+
+    public function __construct(string $nome, float $massa, float $altura)
+    {
+        $this->massa = $massa;
+        $this->altura = $altura;
+        $this->nome = $nome;
+    }
 
     public function calcularIMC(): float
     {
         return $this->massa / ($this->altura ** 2);
     }
+
+    public function getNome(): string
+    {
+        return $this->nome;
+    }
 }
 
-$joao = new Pessoa();
-$joao->nome = 'João';
-$joao->altura = 1.60;
-$joao->massa = 70;
+$pessoa = new Pessoa(nome: 'João', massa: 70, altura: 1.75);
 
-echo "O IMC de {$joao->nome} é {$joao->calcularIMC()}";
+echo "O IMC de {$pessoa->getNome()} é {$pessoa->calcularIMC()}\n";
