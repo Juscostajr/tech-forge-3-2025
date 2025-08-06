@@ -1,14 +1,22 @@
 <?php
+require_once "Endereco.php";
 
 class Pessoa
 {
     private float $massa;
     private float $altura;
+    private Endereco $endereco;
 
-    public function __construct(float $massa, float $altura)
+    public function __construct(float $massa, float $altura, Endereco $endereco)
     {
         $this->massa = $massa;
         $this->altura = $altura;
+        $this->endereco = $endereco;
+    }
+
+    public function getEndereco(): Endereco
+    {
+        return $this->endereco;
     }
 
     public function calcularIMC(): float
@@ -21,9 +29,3 @@ class Pessoa
         return $this->massa;
     }
 }
-
-
-$pessoa = new Pessoa(massa: 70, altura: 1.7);
-
-echo "A massa da pessa é {$pessoa->getMassa()}\n";
-echo "O IMC da pessoa é {$pessoa->calcularIMC()}\n";
